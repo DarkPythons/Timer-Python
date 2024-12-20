@@ -4,4 +4,4 @@
 LINE_SIZE: int = 100
 
 # Использовать текст со смайликами
-SMILE_TEXT = True
+SMILE_TEXT = False

@@ -2,6 +2,7 @@
 Файл, который содержит основные функции для работы программы
 """
 
+import matplotlib.pyplot as plt
 import pandas as pd
 import time
 from _collections_abc import dict_values
@@ -25,7 +26,6 @@ def get_timers_list(all_timers_dict: dict[str, TimerClass]) -> list[TimerClass]:
     Функция для создания списка из объектов таймеров, принимает словарь, 
     где лежат как значения наши объекты, после чего создает список из этих значений
     """
-    print("Список всех доступных таймеров: ")
     timers_object_list_values: dict_values[TimerClass] = all_timers_dict.values()
     timers_object_list: list[TimerClass, TimerClass] = list(timers_object_list_values)
 
@@ -192,3 +192,13 @@ def get_timer_by_number(timers_object_list: list[TimerClass], number: int) -> Ti
     # Получение нужного объекта таймера по его индексу
     timer_object: TimerClass = timers_object_list[index_object_timer]
     return timer_object
+
+def get_list_seconds_timers(timers_object_list: list[TimerClass]) -> list[int, int]:
+    """
+    Функция для формирования списка секунд, которые были насчитаны каждым таймером в отдельности
+    timers_object_list - список всех объектов таймеров
+    """
+
+    seconds_list: list[int, int] = [timer_object.count_time for timer_object in timers_object_list]
+    return seconds_list
+
