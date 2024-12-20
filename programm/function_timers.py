@@ -4,27 +4,30 @@
 
 import pandas as pd
 import time
+from _collections_abc import dict_values
 
 from class_timer import TimerClass
 
-def create_new_timer(name_timer: str):
+def create_new_timer(name_timer: str) -> dict[str, TimerClass]:
     """
     Функция для создания объекта таймера от класса таймера, принимает лишь название самого таймера
+    name_timer - название таймера
+    Делает возврат словаря, где как ключ лежит название таймера, а как значение объект таймера
     """
     # Делаем создание объекта таймера от класса таймера
-    timer_object = TimerClass(name_timer)
+    timer_object: TimerClass = TimerClass(name_timer)
     # Делаем помещение этого объекта таймера в общий словарь наших таймеров
-    timers_dict = {name_timer : timer_object}
+    timers_dict: dict[str, TimerClass] = {name_timer : timer_object}
     return timers_dict
 
-def get_timers_list(all_timers_dict: dict[str, TimerClass]):
+def get_timers_list(all_timers_dict: dict[str, TimerClass]) -> list[TimerClass]:
     """
     Функция для создания списка из объектов таймеров, принимает словарь, 
     где лежат как значения наши объекты, после чего создает список из этих значений
     """
     print("Список всех доступных таймеров: ")
-    timers_object_list = all_timers_dict.values()
-    timers_object_list = list(timers_object_list)
+    timers_object_list_values: dict_values[TimerClass] = all_timers_dict.values()
+    timers_object_list: list[TimerClass, TimerClass] = list(timers_object_list_values)
 
     # Если объектов таймера еще нет
     if not timers_object_list:
@@ -57,7 +60,8 @@ def get_name_number_task(timers_object_list: list[TimerClass], task_message: str
 def get_list_numbers_timers(timers_object_list: list[TimerClass]) -> list[int, int]:
     """
     Функция для получения списка номеров всех таймеров
-    timers_object_list - список из наших объектов таймеров, из которого мы будем получать номера таймеров
+    timers_object_list - список из наших объектов таймеров, 
+    из которого мы будем получать номера таймеров
     Возвращает список целых чисел, то есть наших номеров
     """
     list_numbers_timers = [timers_object.timer_object_count for timers_object in timers_object_list]
@@ -171,3 +175,20 @@ def view_all_information_timers(timers_object_list: list[TimerClass]) -> None:
         data_to_pandas: dict[str, list] = configure_data_to_pandas(timers_object_list)
         # Делаем вызов функции, которая выведет наши данные как таблица, передавая наши данные
         view_data_in_pandas_table(data_to_pandas)
+
+def get_timer_by_number(timers_object_list: list[TimerClass], number: int) -> TimerClass:
+    """
+    Функция для получения конкретного объекта таймера по его номеру
+    timers_object_list - список всех объектов таймеров
+    number - номер нашего таймера, по которому мы хотим вернуть объект таймера
+    Возвращается объект таймера
+    """
+
+    # Получаем список номеров всех таймеров
+    list_numbers_timers: list[int, int] = get_list_numbers_timers(timers_object_list)
+    # Делаем поиск нашего номера в списке номеров таймеров
+    index_object_timer: int = list_numbers_timers.index(number)
+
+    # Получение нужного объекта таймера по его индексу
+    timer_object: TimerClass = timers_object_list[index_object_timer]
+    return timer_object
