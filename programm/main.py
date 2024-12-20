@@ -3,7 +3,9 @@
 python timer_main.py
 python3 timer_main.py
 """
+
 import time
+
 from text import start_message, line, input_command_user, help_user_text
 from class_timer import TimerClass
 from function_timers import *
@@ -37,7 +39,7 @@ while input_user_message not in ("q", "quit",):
         timers_object_list = get_timers_list(all_timers_dict)
         if timers_object_list:
             name_number_timer = get_name_number_task(timers_object_list, "его запуска")
-            numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list, all_timers_dict)
+            numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list)
 
             # Если пользователь ввёл название таймера которое есть в списке названий
             if name_number_timer in names_timers:
@@ -58,7 +60,7 @@ while input_user_message not in ("q", "quit",):
         timers_object_list = get_timers_list(all_timers_dict)
         if timers_object_list:
             name_number_timer = get_name_number_task(timers_object_list, "ЕГО УДАЛЕНИЯ")
-            numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list, all_timers_dict)
+            numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list)
 
 
             # Если пользователь ввёл название таймера которое есть в списке названий
@@ -81,7 +83,7 @@ while input_user_message not in ("q", "quit",):
         timers_object_list = get_timers_list(all_timers_dict)
         if timers_object_list:
             name_number_timer = get_name_number_task(timers_object_list, "ЕГО СБРОСА")
-            numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list, all_timers_dict)
+            numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list)
 
             # Если пользователь ввёл название таймера которое есть в списке названий
             if name_number_timer in names_timers:
@@ -115,7 +117,7 @@ while input_user_message not in ("q", "quit",):
         timers_object_list = get_timers_list(all_timers_dict)
         if timers_object_list:
             name_number_timer = get_name_number_task(timers_object_list, "получение информации о нём")
-            numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list, all_timers_dict)
+            numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list)
 
             # Если пользователь ввёл название таймера которое есть в списке названий
             if name_number_timer in names_timers:
@@ -136,3 +138,4 @@ while input_user_message not in ("q", "quit",):
 
     input_user_message = input(input_command_user)
 
+# question_diagram = input("Сделать вывод диаграммы, которая будет содержать результаты работы таймера?[N/y]: ")
