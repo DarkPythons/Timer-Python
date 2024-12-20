@@ -3,7 +3,6 @@
 """
 import time
 
-
 class TimerClass(object):
     # Количество таймеров
     __count_of_timer: int = 0
@@ -117,7 +116,7 @@ class TimerClass(object):
         # Делаем перевод секунд в часы/минуты/секунды
         hours_time: int = self.count_time // 3600
         minutes_time: int = (self.count_time // 60) % 60
-        second_time: int = self.count_time % 60
+        second_time: int = round(self.count_time % 60, 3)
 
         times_dict = {
             "hours" : hours_time,

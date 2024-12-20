@@ -52,7 +52,7 @@ while input_user_message not in ("q", "quit",):
 
     # Если пользователь хочет удалить таймер
     elif input_user_message in ("d", "delete",):
-        timers_object_list = get_timers_list(all_timers_dict)
+        timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
         if timers_object_list:
             name_number_timer = get_name_number_task(timers_object_list, "ЕГО УДАЛЕНИЯ")
             numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list)
@@ -76,14 +76,14 @@ while input_user_message not in ("q", "quit",):
 
     # Если пользователь хочет сбросить таймер
     if input_user_message in ("r", "restart",): 
-        timers_object_list = get_timers_list(all_timers_dict)
+        timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
         if timers_object_list:
             name_number_timer = get_name_number_task(timers_object_list, "ЕГО СБРОСА")
             numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list)
 
             # Если пользователь ввёл название таймера которое есть в списке названий
             if name_number_timer in names_timers:
-                timer_object =  all_timers_dict[name_number_timer]
+                timer_object: TimerClass = all_timers_dict[name_number_timer]
                 timer_object.restart()
 
             # Если пользователь ввёл название таймера которое есть в списке номеров
@@ -96,7 +96,7 @@ while input_user_message not in ("q", "quit",):
                 print("Названия или номера с таким таймеров просто нет, обратитесь к команде create.")   
     # Если пользователь хочет получить список имён всех таймеров
     elif input_user_message in ("list", "ls",):
-        timers_object_list = get_timers_list(all_timers_dict)
+        timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
 
         if timers_object_list:
             prints_list_timers(timers_object_list)
@@ -105,19 +105,19 @@ while input_user_message not in ("q", "quit",):
 
     # Если пользователь хочет получить информацию обо всех таймерах
     elif input_user_message in ("ia", "info all", "all",):
-        timers_object_list = get_timers_list(all_timers_dict)
+        timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
         view_all_information_timers(timers_object_list)
 
     # Если пользователь хочет получить информацию по конкретному таймеру
     elif input_user_message in ("it", "info timer", "timer",):
-        timers_object_list = get_timers_list(all_timers_dict)
+        timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
         if timers_object_list:
             name_number_timer = get_name_number_task(timers_object_list, "получение информации о нём")
             numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list)
 
             # Если пользователь ввёл название таймера которое есть в списке названий
             if name_number_timer in names_timers:
-                timer_object =  all_timers_dict[name_number_timer]
+                timer_object: TimerClass = all_timers_dict[name_number_timer]
                 timer_object.print_information()
 
             # Если пользователь ввёл название таймера которое есть в списке номеров
