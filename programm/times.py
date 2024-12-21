@@ -1,6 +1,9 @@
 """Модуль, который содержит основные функции для работы с получением времени"""
 
 import datetime
+import time
+
+from config import TIME_DELAY, TEXT_DELAY
 
 def get_time_today() -> str:
     """
@@ -15,3 +18,18 @@ def get_time_today() -> str:
 
     string_datetime: str = f"{day}.{month}.{year}"
     return string_datetime
+
+def delay_actions() -> str:
+    """
+    Функция, для задрежки действий пользователя, то есть чтобы была иллюзия загрузки
+    """
+
+    part_of_delay = TIME_DELAY / 3
+
+    for index in range(0, 3):
+        print(TEXT_DELAY, end=" ", flush=True)
+        time.sleep(part_of_delay)
+    
+    print("")
+
+    

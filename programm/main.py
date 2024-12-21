@@ -4,9 +4,7 @@ python timer_main.py
 python3 timer_main.py
 """
 
-import time
-import matplotlib.pyplot as plt
-
+from times import delay_actions
 from exception import ViewDiagrammError
 from text import start_message, line, input_command_user, help_user_text, command_not_found
 from class_timer import Timer
@@ -23,6 +21,8 @@ all_timers_dict: dict = {}
 # Приветствие с пользователем
 print(start_message)
 print(line)
+
+delay_actions()
 
 input_user_message: str = input(input_command_user)
 
@@ -110,7 +110,6 @@ while input_user_message not in ("q", "quit",):
 
         if timers_object_list:
             prints_list_timers(timers_object_list)
-            time.sleep(1)
 
 
     # Если пользователь хочет получить информацию обо всех таймерах
@@ -148,19 +147,24 @@ while input_user_message not in ("q", "quit",):
     else:
         print(command_not_found)
 
+    delay_actions()
     input_user_message = input(input_command_user)
 
 answer_yes = ["Y", "y", "yes", "Yes", "yEs", "YES", "да", "Да", "дА", "ДА", "+"]
 
+print(line)
 
 question_diagram = input("Хотите вывести диаграмму, "
     "которая будет отображать соотношение посчитанного времени на всех таймерах [N/y]: ") 
+
+delay_actions()
 
 # Если ответ на вопрос о выводе диаграммы находится в списках да
 if question_diagram in answer_yes:
     if all_timers_dict:
         try:
             show_diagram(all_timers_dict)
+
         except ViewDiagrammError as Error:
             print(f"К сожалению возникла ошибка при выводе диаграммы, текст ошибки: {Error}")
     else:
@@ -173,15 +177,20 @@ else:
 if question_diagram in answer_yes:
     question_save_diagram = input("Хотите сохранить выведенную диаграму в файл [N/y]: ")
 
+    delay_actions()
+
 if question_diagram in answer_yes:
     # Если пользователь хочет сохранить диаграмму
     if question_save_diagram in answer_yes:
         file_path = get_file_path_diagram()
+        delay_actions()
         # Сохраняем диаграмму в файл, передавая полученный путь до файла и состояние самой диаграммы
         save_diagram_to_file(file_path, all_timers_dict)
-        print("Диаграмма была сохранена")
+        print("Диаграмма была сохранена\n")
 
 question_file = input("Хотите сохранить результат работы программы (в виде таблицы) в файл [N/y]: ")
+
+delay_actions()
 
 # Если ответ на вопрос о сохранении результата программы в файл да
 if question_file in answer_yes:

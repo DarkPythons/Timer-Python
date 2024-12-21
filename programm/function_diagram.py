@@ -124,8 +124,8 @@ def get_file_path_diagram() -> str:
         print(f"Путь '{user_path}' валиден, сохранение диаграммы пройдёт в него.")
         path = user_path
     else:
-        print(f"Путь '{user_path}' не валиден, сохранение диаграммы пройдёт в файл по умолчанию, "
-            f"по пути: '{path}'")
+        print(f"Путь '{user_path}' не валиден, сохранение диаграммы пройдёт в файл по умолчанию, ")
+        print(f"по пути: '{path}'")
     
     return path
 

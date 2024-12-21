@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-from times import get_time_today
+from times import get_time_today, delay_actions
 
 def validate_user_path(user_path: str) -> bool:
     """
@@ -37,6 +37,8 @@ def get_file_path() -> str:
     print(r"Пример такого пути: C:\Users\User\Desktop\my_prod.txt")
     user_path = input("Введите путь и название файла, " 
         "куда бы вы хотели записать результаты (не обязательно): ")
+
+    delay_actions()
     
     valide_path: bool = validate_user_path(user_path)
     # Если путь который ввёл пользователь валиден
@@ -44,8 +46,8 @@ def get_file_path() -> str:
         print(f"Путь '{user_path}' валиден, сохранение результатов пройдёт в него.")
         path = user_path
     else:
-        print(f"Путь '{user_path}' не валиден, сохранение пройдёт в файл по умолчанию, "
-            f"по пути: '{path}'")
+        print(f"Путь '{user_path}' не валиден, сохранение пройдёт в файл по умолчанию, ")
+        print(f"по пути: '{path}'")
         
     return path
 

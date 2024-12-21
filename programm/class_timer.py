@@ -31,13 +31,15 @@ class Timer(object):
         print(f"Таймер '{self.name_timer}' был запущен.")
         start_timer_time: float = time.time()
         # Таймер будет считать время до тех пор, пока пользователь не сделает ввод
-        finished_answer: str = input("Введите любое значение для того, чтобы остановить таймер: \n")
+        finished_answer: str = input("Введите любое значение для того, чтобы остановить таймер: \n> ")
         finished_timer_time: float = time.time()
         # Высчитываем количество прошедшего времени
         time_count: float = round(finished_timer_time - start_timer_time, 3)
 
         # Делаем перевод количества секунд в часы/минуты/секунды
         times_dict: dict[str, int] = self.second_to_hour_min_sec_static(time_count)
+
+        print()
 
         print(f"За эту итерацию таймер '{self.name_timer}' насчитал: ")
         print(f"{times_dict["hours"]} часов")
