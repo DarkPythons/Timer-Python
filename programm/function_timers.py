@@ -2,7 +2,6 @@
 Файл, который содержит основные функции для работы программы
 """
 
-import matplotlib.pyplot as plt
 import pandas as pd
 import time
 from _collections_abc import dict_values
@@ -161,6 +160,7 @@ def view_data_in_pandas_table(data_to_pandas: dict[str, list]) -> None:
     data_frame: pd.DataFrame = pd.DataFrame(data_to_pandas)
     # Выводим нашу таблицу данных
     print(data_frame)
+
 
 def view_all_information_timers(timers_object_list: list[TimerClass]) -> None:
     """

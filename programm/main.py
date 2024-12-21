@@ -5,12 +5,14 @@ python3 timer_main.py
 """
 
 import time
+import matplotlib.pyplot as plt
 
 from exception import ViewDiagrammError
 from text import start_message, line, input_command_user, help_user_text, command_not_found
 from class_timer import TimerClass
 from function_timers import *
-from function_diagram import show_diagram
+from function_diagram import show_diagram, create_pandas_object
+from function_files import save_dataframe_to_file
 
 # Словарь который будет содержать все объекты таймера в виде:
 # Название таймера - объект таймера
@@ -32,7 +34,7 @@ while input_user_message not in ("q", "quit",):
         print(f"Таймер '{name_timer}' был создан")
 
     # Если пользователь хочет запустить таймер
-    if input_user_message in ("s", "start",):
+    elif input_user_message in ("s", "start",):
         print("Список всех доступных таймеров: ")
         timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
         if timers_object_list:
@@ -79,7 +81,7 @@ while input_user_message not in ("q", "quit",):
                 print("Названия или номера с таким таймеров просто нет, обратитесь к команде create.")   
 
     # Если пользователь хочет сбросить таймер
-    if input_user_message in ("r", "restart",):
+    elif input_user_message in ("r", "restart",):
         print("Список всех доступных таймеров: ")
         timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
         if timers_object_list:
@@ -148,6 +150,7 @@ while input_user_message not in ("q", "quit",):
 
 answer_yes = ["Y", "y", "yes", "Yes", "yEs", "YES", "да", "Да", "дА", "ДА", "+"]
 
+
 question_diagram = input("Хотите вывести диаграмму, "
     "которая будет отображать соотношение посчитанного времени на всех таймерах [N/y]: ") 
 
@@ -165,3 +168,18 @@ else:
     print("Продолжим.")
 
 
+
+
+question_file = input("Хотите сохранить результат работы программы (в виде таблицы) в файл [N/y]: ")
+
+# Если ответ на вопрос о сохранении результата программы в файл да
+if question_file in answer_yes:
+    if all_timers_dict:
+        timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
+        data_pandas: dict[str, list] = configure_data_to_pandas(timers_object_list)
+        dataframe_object: pd.DataFrame = create_pandas_object(data_pandas)
+        save_dataframe_to_file(dataframe_object)
+    else:
+        print("К сожалению у вас нет таймеров, чтобы делать вывод результатов в файл")
+else:
+    print("Продолжим.")
