@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 from exception import ViewDiagrammError
 from text import start_message, line, input_command_user, help_user_text, command_not_found
-from class_timer import TimerClass
+from class_timer import Timer
 from function_timers import *
 from function_diagram import (
     show_diagram, create_pandas_object, get_file_path_diagram, save_diagram_to_file
@@ -31,27 +31,27 @@ while input_user_message not in ("q", "quit",):
     # Если пользователь хочет создать новый объект таймера
     if input_user_message in ("c", "create",):
         name_timer = input("Введите название таймера: ")
-        timers_dict: dict[str, TimerClass] = create_new_timer(name_timer)
+        timers_dict: dict[str, Timer] = create_new_timer(name_timer)
         all_timers_dict.update(timers_dict)
         print(f"Таймер '{name_timer}' был создан")
 
     # Если пользователь хочет запустить таймер
     elif input_user_message in ("s", "start",):
         print("Список всех доступных таймеров: ")
-        timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
+        timers_object_list: list[Timer] = get_timers_list(all_timers_dict)
         if timers_object_list:
             name_number_timer: str = get_name_number_task(timers_object_list, "его запуска")
             numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list)
 
             # Если пользователь ввёл название таймера которое есть в списке названий
             if name_number_timer in names_timers:
-                timer_object: TimerClass = all_timers_dict[name_number_timer]
+                timer_object: Timer = all_timers_dict[name_number_timer]
                 timer_object.start()
 
             # Если пользователь ввёл название таймера которое есть в списке номеров
             elif name_number_timer in numbers_timers:
                 number_timer = int(name_number_timer)
-                timer_object: TimerClass = get_timer_by_number(timers_object_list, number_timer)
+                timer_object: Timer = get_timer_by_number(timers_object_list, number_timer)
                 timer_object.start()
 
             else:
@@ -60,7 +60,7 @@ while input_user_message not in ("q", "quit",):
     # Если пользователь хочет удалить таймер
     elif input_user_message in ("d", "delete",):
         print("Список всех доступных таймеров: ")
-        timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
+        timers_object_list: list[Timer] = get_timers_list(all_timers_dict)
         if timers_object_list:
             name_number_timer = get_name_number_task(timers_object_list, "ЕГО УДАЛЕНИЯ")
             numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list)
@@ -74,7 +74,7 @@ while input_user_message not in ("q", "quit",):
             # Если пользователь ввёл название таймера которое есть в списке номеров
             elif name_number_timer in numbers_timers:
                 number_timer = int(name_number_timer)
-                timer_object: TimerClass = get_timer_by_number(timers_object_list, number_timer)
+                timer_object: Timer = get_timer_by_number(timers_object_list, number_timer)
                 name_timer = timer_object.name_timer
                 del all_timers_dict[name_timer]
                 print(f"Таймер '{name_timer}' был удален")
@@ -85,20 +85,20 @@ while input_user_message not in ("q", "quit",):
     # Если пользователь хочет сбросить таймер
     elif input_user_message in ("r", "restart",):
         print("Список всех доступных таймеров: ")
-        timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
+        timers_object_list: list[Timer] = get_timers_list(all_timers_dict)
         if timers_object_list:
             name_number_timer = get_name_number_task(timers_object_list, "ЕГО СБРОСА")
             numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list)
 
             # Если пользователь ввёл название таймера которое есть в списке названий
             if name_number_timer in names_timers:
-                timer_object: TimerClass = all_timers_dict[name_number_timer]
+                timer_object: Timer = all_timers_dict[name_number_timer]
                 timer_object.restart()
 
             # Если пользователь ввёл название таймера которое есть в списке номеров
             elif name_number_timer in numbers_timers:
                 number_timer = int(name_number_timer)
-                timer_object: TimerClass = get_timer_by_number(timers_object_list, number_timer)
+                timer_object: Timer = get_timer_by_number(timers_object_list, number_timer)
                 timer_object.restart()
 
             else:
@@ -106,7 +106,7 @@ while input_user_message not in ("q", "quit",):
     # Если пользователь хочет получить список имён всех таймеров
     elif input_user_message in ("list", "ls",):
         print("Список всех доступных таймеров: ")
-        timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
+        timers_object_list: list[Timer] = get_timers_list(all_timers_dict)
 
         if timers_object_list:
             prints_list_timers(timers_object_list)
@@ -116,26 +116,26 @@ while input_user_message not in ("q", "quit",):
     # Если пользователь хочет получить информацию обо всех таймерах
     elif input_user_message in ("ia", "info all", "all",):
         print("Список всех доступных таймеров: ")
-        timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
+        timers_object_list: list[Timer] = get_timers_list(all_timers_dict)
         view_all_information_timers(timers_object_list)
 
     # Если пользователь хочет получить информацию по конкретному таймеру
     elif input_user_message in ("it", "info timer", "timer",):
         print("Список всех доступных таймеров: ")
-        timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
+        timers_object_list: list[Timer] = get_timers_list(all_timers_dict)
         if timers_object_list:
             name_number_timer = get_name_number_task(timers_object_list, "получение информации о нём")
             numbers_timers, names_timers = get_lists_numbers_and_names_timers(timers_object_list)
 
             # Если пользователь ввёл название таймера которое есть в списке названий
             if name_number_timer in names_timers:
-                timer_object: TimerClass = all_timers_dict[name_number_timer]
+                timer_object: Timer = all_timers_dict[name_number_timer]
                 timer_object.print_information()
 
             # Если пользователь ввёл название таймера которое есть в списке номеров
             elif name_number_timer in numbers_timers:
                 number_timer = int(name_number_timer)
-                timer_object: TimerClass = get_timer_by_number(timers_object_list, number_timer)
+                timer_object: Timer = get_timer_by_number(timers_object_list, number_timer)
                 timer_object.print_information()
 
             else:
@@ -179,13 +179,14 @@ if question_diagram in answer_yes:
         file_path = get_file_path_diagram()
         # Сохраняем диаграмму в файл, передавая полученный путь до файла и состояние самой диаграммы
         save_diagram_to_file(file_path, all_timers_dict)
+        print("Диаграмма была сохранена")
 
 question_file = input("Хотите сохранить результат работы программы (в виде таблицы) в файл [N/y]: ")
 
 # Если ответ на вопрос о сохранении результата программы в файл да
 if question_file in answer_yes:
     if all_timers_dict:
-        timers_object_list: list[TimerClass] = get_timers_list(all_timers_dict)
+        timers_object_list: list[Timer] = get_timers_list(all_timers_dict)
         data_pandas: dict[str, list] = configure_data_to_pandas(timers_object_list)
         dataframe_object: pd.DataFrame = create_pandas_object(data_pandas)
         save_dataframe_to_file(dataframe_object)

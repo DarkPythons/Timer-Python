@@ -3,7 +3,7 @@
 """
 import time
 
-class TimerClass(object):
+class Timer(object):
     # Количество таймеров
     __count_of_timer: int = 0
     
@@ -20,7 +20,7 @@ class TimerClass(object):
 
     @classmethod
     def __add_count(cls) -> None:
-        """Метод для увеличения количества таймеров образованных от класса TimerClass"""
+        """Метод для увеличения количества таймеров образованных от класса Timer"""
         cls.__count_of_timer += 1
 
     def start(self) -> None:

@@ -4,8 +4,8 @@
 
 import matplotlib.pyplot as plt
 import pandas as pd
-import copy
-from class_timer import TimerClass
+
+from class_timer import Timer
 from function_timers import get_timers_list, get_list_names_timers, get_list_seconds_timers
 
 def create_pandas_object(data_to_pandas: dict[str, list]) -> pd.DataFrame:
@@ -20,7 +20,8 @@ def create_pandas_object(data_to_pandas: dict[str, list]) -> pd.DataFrame:
 def validate_timers_seconds(timers_second_list: list[int, int]):
     """
     Функция для преобразования списка секунд, которые в отдельности были насчитаны таймерами.
-    При списке секунд, где у нас все нули, matplotlib при выводе выдавала ошибку, поэтому такой список,
+    При списке секунд, где у нас все нули, matplotlib при выводе выдавала ошибку, 
+    поэтому такой список,
     где все нули, я решил заменить на список, где все единицы, результат от этого не меняется.
     timers_second_list - список секунд, которые были насчитаны всеми таймерами
     """
@@ -60,14 +61,14 @@ def create_diagram_object(timers_second_list: list[int, int], timers_names_list:
     return plt
 
 
-def show_diagram(dict_timers_all: dict[str, TimerClass]) -> None:
+def show_diagram(dict_timers_all: dict[str, Timer]) -> None:
     """
     Функция для подготовки данных и конечного вывода диаграммы
     dict_timers_all - словарь всех таймеров, где ключ это название таймера, 
     а значение - объект таймера
     """
     # Делаем получение только объектов таймеров помещая эти объекты в список
-    timers_object_list: list[TimerClass] = get_timers_list(dict_timers_all)
+    timers_object_list: list[Timer] = get_timers_list(dict_timers_all)
     # Получение всех названий таймеров
     timers_names_list: list[str, str] = get_list_names_timers(timers_object_list)
     # Получение списка секунд, которые насчитали все таймеры в виде списка
@@ -111,7 +112,8 @@ def get_file_path_diagram() -> str:
 
     print(r"Пример такого пути: C:\Users\User\Desktop\diagram.png")
 
-    user_path = input("Введите путь и название файла, куда бы вы хотели сохранить диаграмму (не обязательно): ")
+    user_path = input("Введите путь и название файла, "
+        "куда бы вы хотели сохранить диаграмму (не обязательно): ")
 
     valide_path: bool = validate_user_path_diag(user_path)
 
@@ -125,13 +127,13 @@ def get_file_path_diagram() -> str:
     
     return path
 
-def save_diagram_to_file(file_path: str, dict_timers_all: dict[str, TimerClass]) -> None:
+def save_diagram_to_file(file_path: str, dict_timers_all: dict[str, Timer]) -> None:
     """
     Функция для сохранения диаграммы, которая уже была выведена в файл
     file_path - путь до файла, куда нужно будет поместить диаграмму
     """
     # Делаем получение только объектов таймеров помещая эти объекты в список
-    timers_object_list: list[TimerClass] = get_timers_list(dict_timers_all)
+    timers_object_list: list[Timer] = get_timers_list(dict_timers_all)
     # Получение всех названий таймеров
     timers_names_list: list[str, str] = get_list_names_timers(timers_object_list)
     # Получение списка секунд, которые насчитали все таймеры в виде списка
