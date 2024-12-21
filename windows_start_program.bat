@@ -41,3 +41,5 @@ if %program_start% EQU 1 (
 ) else (
 	echo К сожалению программу не удалось запустить
 )
+
+pause
