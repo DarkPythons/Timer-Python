@@ -58,6 +58,7 @@ def save_dataframe_to_file(pandas_dataframe: pd.DataFrame) -> bool:
 
     # Открытие файла по его пути и сохранение нашего фрейма в виде строки
     with open(file_path, "a") as file_open:
-        file_open.write("\n")
         file_open.write(string_dataframe)
+        file_open.write("\n")
+        file_open.write("\n")
     
