@@ -2,6 +2,8 @@
 
 import pandas as pd
 
+from times import get_time_today
+
 def validate_user_path(user_path: str) -> bool:
     """
     Функция для валидации пути, который ввёл пользователь
@@ -29,7 +31,8 @@ def get_file_path() -> str:
     Будет делать запрос пользователю, чтобы он ввёл путь, если он его не вводит, или
     вводит некорректный путь, то возвращается путь по умолчанию.
     """
-    path = "../data_program/timer_data.txt"
+    today_time: str = get_time_today()
+    path = f"../data_program/{today_time}_timer_data.txt"
 
     print(r"Пример такого пути: C:\Users\User\Desktop\my_prod.txt")
     user_path = input("Введите путь и название файла, " 
