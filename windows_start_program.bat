@@ -15,6 +15,8 @@ pause
 :: Установка пакетного менеджера poetry
 pip install poetry && echo poetry пакетный менеджер был установлен (или он у вас уже был)
 
+echo Создание виртуального окружения со всеми зависимостями проекта. Ожидайте...
+
 :: Установка всех нужных зависимостей в окружение .venv
 poetry install && echo Все зависимости установлены
 
@@ -25,6 +27,7 @@ cd programm
 set program_start=0
 
 if %program_start% EQU 0 (
+	echo Запуск:
     poetry run python main.py && set program_start=1
 )
 
