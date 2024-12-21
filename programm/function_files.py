@@ -3,6 +3,7 @@
 import pandas as pd
 
 from times import get_time_today, delay_actions
+from config import SEP
 
 def validate_user_path(user_path: str) -> bool:
     """
@@ -32,9 +33,9 @@ def get_file_path() -> str:
     вводит некорректный путь, то возвращается путь по умолчанию.
     """
     today_time: str = get_time_today()
-    path = f"..\\data_program\\{today_time}_timer_data.txt"
+    path = f"..{SEP}data_program{SEP}{today_time}_timer_data.txt"
 
-    print(r"Пример такого пути: C:\Users\User\Desktop\my_prod.txt")
+    print(f"Пример такого пути: C:{SEP}Users{SEP}User{SEP}Desktop{SEP}my_prod.txt")
     user_path = input("Введите путь и название файла, " 
         "куда бы вы хотели записать результаты (не обязательно): ")
 

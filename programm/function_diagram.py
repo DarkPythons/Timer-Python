@@ -8,6 +8,7 @@ import pandas as pd
 from class_timer import Timer
 from function_timers import get_timers_list, get_list_names_timers, get_list_seconds_timers
 from times import get_time_today
+from config import SEP
 
 def create_pandas_object(data_to_pandas: dict[str, list]) -> pd.DataFrame:
     """
@@ -101,7 +102,7 @@ def validate_user_path_diag(user_path: str) -> bool:
     # Попытка открыть файл и сделать запись
     try:
         with open(user_path, "a") as file:
-            file.write(0x10)
+            file.write("")
     except (PermissionError, FileNotFoundError):
         valide = False
 
@@ -110,9 +111,9 @@ def validate_user_path_diag(user_path: str) -> bool:
 def get_file_path_diagram() -> str:
     """Функция для получения пути до файла, куда нужно будет сохранить диаграмму"""
     today_time: str = get_time_today()
-    path = f"..\\data_program\\{today_time}_diagram.png"
+    path = f"..{SEP}data_program{SEP}{today_time}_diagram.png"
 
-    print(r"Пример такого пути: C:\Users\User\Desktop\diagram.png")
+    print(f"Пример такого пути: C:{SEP}Users{SEP}User{SEP}Desktop{SEP}diagram.png")
 
     user_path = input("Введите путь и название файла, "
         "куда бы вы хотели сохранить диаграмму (не обязательно): ")

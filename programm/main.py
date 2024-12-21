@@ -203,3 +203,7 @@ if question_file in answer_yes:
         print("К сожалению у вас нет таймеров, чтобы делать вывод результатов в файл")
 else:
     print("Продолжим.")
+
+
+delay_actions()
+print("Досвидания.")
