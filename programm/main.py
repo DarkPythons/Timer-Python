@@ -11,7 +11,9 @@ from exception import ViewDiagrammError
 from text import start_message, line, input_command_user, help_user_text, command_not_found
 from class_timer import TimerClass
 from function_timers import *
-from function_diagram import show_diagram, create_pandas_object
+from function_diagram import (
+    show_diagram, create_pandas_object, get_file_path_diagram, save_diagram_to_file
+)
 from function_files import save_dataframe_to_file
 
 # Словарь который будет содержать все объекты таймера в виде:
@@ -167,8 +169,16 @@ if question_diagram in answer_yes:
 else:
     print("Продолжим.")
 
+# Если диаграмма была выведена пользователю
+if question_diagram in answer_yes:
+    question_save_diagram = input("Хотите сохранить выведенную диаграму в файл [N/y]: ")
 
-
+if question_diagram in answer_yes:
+    # Если пользователь хочет сохранить диаграмму
+    if question_save_diagram in answer_yes:
+        file_path = get_file_path_diagram()
+        # Сохраняем диаграмму в файл, передавая полученный путь до файла и состояние самой диаграммы
+        save_diagram_to_file(file_path, all_timers_dict)
 
 question_file = input("Хотите сохранить результат работы программы (в виде таблицы) в файл [N/y]: ")
 
