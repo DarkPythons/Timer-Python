@@ -42,9 +42,9 @@ class Timer(object):
         print()
 
         print(f"За эту итерацию таймер '{self.name_timer}' насчитал: ")
-        print(f"{times_dict["hours"]} часов")
-        print(f"{times_dict["minutes"]} минут")
-        print(f"{times_dict["seconds"]} секунд")
+        print(f"{times_dict['hours']} часов")
+        print(f"{times_dict['minutes']} минут")
+        print(f"{times_dict['seconds']} секунд")
 
         # Делаем прибавление нашего получившегося времени которое было насчитано к общему таймеру
         self.count_time += time_count
@@ -53,9 +53,9 @@ class Timer(object):
         times_dict_general: dict[str, int] = self.second_to_hour_min_sec()
 
         print(f"Общее время на таймере за все итерации: ")
-        print(f"{times_dict_general["hours"]} часов")
-        print(f"{times_dict_general["minutes"]} минут")
-        print(f"{times_dict_general["seconds"]} секунд")
+        print(f"{times_dict_general['hours']} часов")
+        print(f"{times_dict_general['minutes']} минут")
+        print(f"{times_dict_general['seconds']} секунд")
         time.sleep(1)
 
     def restart(self) -> None:
