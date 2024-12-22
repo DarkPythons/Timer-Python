@@ -62,7 +62,7 @@ CLI таймер создан с целью контролирования св�
 
 ## Что вы должны увидеть после запуска программы (programm/main.py):
 
-<img src="https://s3.radikal.cloud/2024/12/22/start57c01de91a59d41c.png" alt="start57c01de91a59d41c.png" border="0" />
+<img src="https://s3.radikal.cloud/2024/12/22/start57c01de91a59d41c.png" alt="start57c01de91a59d41c.png" border="0" height="70%" width="70%" />
 
 ## Конфигурация (Timer-Python/programm/config.py)
 Можно сделать специальную настройку под себя таких параметров как:
@@ -75,7 +75,7 @@ CLI таймер создан с целью контролирования св�
 
 ### Получение справки по командам (команда help (или h))
 
-<img src="https://s3.radikal.cloud/2024/12/22/helpaaddbce2115bd8cd.png" alt="helpaaddbce2115bd8cd.png" border="0" />
+<img src="https://s3.radikal.cloud/2024/12/22/helpaaddbce2115bd8cd.png" alt="helpaaddbce2115bd8cd.png" border="0" height="70%" width="70%" />
 
 ###  Получение информации по всем таймерам в виде таблицы (команда info all (или ia))
 
@@ -93,19 +93,19 @@ CLI таймер создан с целью контролирования св�
 2) Сохранить эту выведенную диаграмму в виде png файла
 3) Сохранить результат работы всех таймеров в виде таблицы в текстовый файл
 
-<img src="https://s3.radikal.cloud/2024/12/22/q2bc48443f57f199d.png" alt="q2bc48443f57f199d.png" border="0" />
+<img src="https://s3.radikal.cloud/2024/12/22/q2bc48443f57f199d.png" alt="q2bc48443f57f199d.png" border="0" height="70%" width="70%" />
 
 ### 1) Пример диаграммы, которая выводится пользователю
 
-<img src="https://s3.radikal.cloud/2024/12/22/diagramdaddd438afb2d854.png" alt="diagramdaddd438afb2d854.png" border="0" />
+<img src="https://s3.radikal.cloud/2024/12/22/diagramdaddd438afb2d854.png" alt="diagramdaddd438afb2d854.png" border="0" height="70%" width="70%" />
 
 ### 2) Пример уже сохраненной диаграммы в виде png файлa по пути, который стоит по умолчанию
 
-<img src="https://s3.radikal.cloud/2024/12/22/diagram_pngf411c9d0da56b82c.png" alt="diagram_pngf411c9d0da56b82c.png" border="0" />
+<img src="https://s3.radikal.cloud/2024/12/22/diagram_pngf411c9d0da56b82c.png" alt="diagram_pngf411c9d0da56b82c.png" border="0" height="70%" width="70%" />
 
 ### 3) Пример результатов работы программы в текстовом файле
 
-<img src="https://s3.radikal.cloud/2024/12/22/text7ea361facdb00c70.png" alt="text7ea361facdb00c70.png" border="0" />
+<img src="https://s3.radikal.cloud/2024/12/22/text7ea361facdb00c70.png" alt="text7ea361facdb00c70.png" border="0"  height="70%" width="70%"/>
 
 
 ## Разработчики
