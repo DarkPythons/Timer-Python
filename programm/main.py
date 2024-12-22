@@ -173,11 +173,14 @@ if question_diagram in answer_yes:
 else:
     print("Продолжим.")
 
+question_save_diagram = "нет"
+
 # Если диаграмма была выведена пользователю
 if question_diagram in answer_yes:
-    question_save_diagram = input("Хотите сохранить выведенную диаграму в файл [N/y]: ")
-
-    delay_actions()
+    # Если у пользователя есть хотя бы один таймер
+    if all_timers_dict:
+        question_save_diagram = input("Хотите сохранить выведенную диаграму в файл [N/y]: ")
+        delay_actions()
 
 if question_diagram in answer_yes:
     # Если пользователь хочет сохранить диаграмму
