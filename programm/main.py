@@ -175,21 +175,19 @@ else:
 
 question_save_diagram = "нет"
 
-# Если диаграмма была выведена пользователю
-if question_diagram in answer_yes:
-    # Если у пользователя есть хотя бы один таймер
-    if all_timers_dict:
-        question_save_diagram = input("Хотите сохранить выведенную диаграму в файл [N/y]: ")
-        delay_actions()
 
-if question_diagram in answer_yes:
-    # Если пользователь хочет сохранить диаграмму
-    if question_save_diagram in answer_yes:
-        file_path = get_file_path_diagram()
-        delay_actions()
-        # Сохраняем диаграмму в файл, передавая полученный путь до файла и состояние самой диаграммы
-        save_diagram_to_file(file_path, all_timers_dict)
-        print("Диаграмма была сохранена\n")
+# Если у пользователя есть хотя бы один таймер
+if all_timers_dict:
+    question_save_diagram = input("Хотите сохранить диаграму таймеров в файл [N/y]: ")
+    delay_actions()
+
+# Если пользователь хочет сохранить диаграмму
+if question_save_diagram in answer_yes:
+    file_path = get_file_path_diagram()
+    delay_actions()
+    # Сохраняем диаграмму в файл, передавая полученный путь до файла и состояние самой диаграммы
+    save_diagram_to_file(file_path, all_timers_dict)
+    print("Диаграмма была сохранена\n")
 
 question_file = input("Хотите сохранить результат работы программы (в виде таблицы) в файл [N/y]: ")
 
