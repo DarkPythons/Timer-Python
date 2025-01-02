@@ -4,16 +4,18 @@ python timer_main.py
 python3 timer_main.py
 """
 
-from times import delay_actions
-from exception import ViewDiagrammError
-from text import start_message, line, input_command_user, help_user_text, command_not_found
-from class_timer import Timer
-from function_timers import *
-from function_diagram import (
-    show_diagram, create_pandas_object, get_file_path_diagram, save_diagram_to_file
-)
-from function_files import save_dataframe_to_file
-from save_programm import load_data_to_json
+import pandas as pd
+from text import line, start_message, input_command_user, help_user_text, command_not_found
+from times.times import delay_actions
+from timer.class_timer import Timer 
+from timer.function_timers import create_new_timer, get_timers_list, get_name_number_task, get_lists_numbers_and_names_timers, get_timer_by_number, prints_list_timers, view_all_information_timers, configure_data_to_pandas
+from exception.diagram_exception import ViewDiagrammError
+from diagram.show_diagram import show_diagram
+from diagram.save_diagram import save_diagram_to_file
+from save_load_json.save_programm import save_data_to_json
+from diagram.utils import  create_pandas_object, get_file_path_diagram
+from save_file.save_files import save_dataframe_to_file
+
 
 # Словарь который будет содержать все объекты таймера в виде:
 # Название таймера - объект таймера
@@ -219,6 +221,6 @@ if all_timers_dict:
 else:
     print("Для выведения итогов программы, должен быть создан хотя бы один таймер.")
 
-load_data_to_json(all_timers_dict)
+save_data_to_json(all_timers_dict)
 
 print("Досвидания.")

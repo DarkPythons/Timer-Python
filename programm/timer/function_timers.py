@@ -6,7 +6,7 @@ import pandas as pd
 import time
 from _collections_abc import dict_values
 
-from class_timer import Timer
+from timer.class_timer import Timer
 
 def create_new_timer(name_timer: str) -> dict[str, Timer]:
     """

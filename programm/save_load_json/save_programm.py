@@ -1,13 +1,9 @@
-"""
-Модуль, в котором лежат основные функции и методы для работы с json файлом, где лежат итоги работы программы.
-Эти итоги можно будет загружать из программы и в программу обратно,
-чтобы продолжить работу с уже созданными таймерами раннее
-"""
-from class_timer import Timer
+
 import json
+from timer.class_timer import Timer
 
 
-class LoadToJson:
+class SaveToJson:
 
     def create_data_to_json(self, all_timers_dict: dict[str, Timer]):
         dict_finish = {}
@@ -36,9 +32,9 @@ class LoadToJson:
             json.dump(dict_data_to_json, file_json)
 
 
-def load_data_to_json(all_timers_dict):
-    json_load = LoadToJson()
+def save_data_to_json(all_timers_dict):
+    json_save = SaveToJson()
     # Создаем словарь данных, который должен будет пойти в json
-    dict_data_to_json = json_load.create_data_to_json(all_timers_dict)
-    json_load.save_dict_data_json(dict_data_to_json)
+    dict_data_to_json = json_save.create_data_to_json(all_timers_dict)
+    json_save.save_dict_data_json(dict_data_to_json)
 

@@ -1,9 +1,7 @@
-"""Модуль, который содержит основные функции для сохранения результатов работы программы в файл."""
 
-import pandas as pd
-
-from times import get_time_today, delay_actions
 from config import SEP
+from times.times import get_time_today, delay_actions
+
 
 def validate_user_path(user_path: str) -> bool:
     """
@@ -51,14 +49,3 @@ def get_file_path() -> str:
         print(f"по пути: '{path}'")
         
     return path
-
-def save_dataframe_to_file(pandas_dataframe: pd.DataFrame) -> bool:
-    file_path = get_file_path()
-    string_dataframe: str = str(pandas_dataframe)
-
-    # Открытие файла по его пути и сохранение нашего фрейма в виде строки
-    with open(file_path, "a") as file_open:
-        file_open.write(string_dataframe)
-        file_open.write("\n")
-        file_open.write("\n")
-    

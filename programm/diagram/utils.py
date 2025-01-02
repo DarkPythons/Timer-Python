@@ -5,10 +5,9 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from class_timer import Timer
-from function_timers import get_timers_list, get_list_names_timers, get_list_seconds_timers
-from times import get_time_today
+from times.times import get_time_today
 from config import SEP
+
 
 def create_pandas_object(data_to_pandas: dict[str, list]) -> pd.DataFrame:
     """
@@ -63,22 +62,7 @@ def create_diagram_object(timers_second_list: list[int, int], timers_names_list:
     return plt
 
 
-def show_diagram(dict_timers_all: dict[str, Timer]) -> None:
-    """
-    Функция для подготовки данных и конечного вывода диаграммы
-    dict_timers_all - словарь всех таймеров, где ключ это название таймера, 
-    а значение - объект таймера
-    """
-    # Делаем получение только объектов таймеров помещая эти объекты в список
-    timers_object_list: list[Timer] = get_timers_list(dict_timers_all)
-    # Получение всех названий таймеров
-    timers_names_list: list[str, str] = get_list_names_timers(timers_object_list)
-    # Получение списка секунд, которые насчитали все таймеры в виде списка
-    timers_second_list: list[int, int] = get_list_seconds_timers(timers_object_list)
 
-    diagram_object: plt = create_diagram_object(timers_second_list, timers_names_list)
-    # Делаем показ круговой диаграммы на экран
-    diagram_object.show()
 
 def validate_user_path_diag(user_path: str) -> bool:
     """
@@ -130,20 +114,3 @@ def get_file_path_diagram() -> str:
     
     return path
 
-def save_diagram_to_file(file_path: str, dict_timers_all: dict[str, Timer]) -> None:
-    """
-    Функция для сохранения диаграммы, которая уже была выведена в файл
-    file_path - путь до файла, куда нужно будет поместить диаграмму
-    """
-    # Делаем получение только объектов таймеров помещая эти объекты в список
-    timers_object_list: list[Timer] = get_timers_list(dict_timers_all)
-    # Получение всех названий таймеров
-    timers_names_list: list[str, str] = get_list_names_timers(timers_object_list)
-    # Получение списка секунд, которые насчитали все таймеры в виде списка
-    timers_second_list: list[int, int] = get_list_seconds_timers(timers_object_list)
-
-    # Создание объекта диаграммы
-    diagram_object: plt = create_diagram_object(timers_second_list, timers_names_list)
-    
-    # Сохранение объекта диаграммы в файл по указанному пути
-    diagram_object.savefig(file_path)
