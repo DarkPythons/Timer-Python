@@ -8,7 +8,10 @@ import pandas as pd
 from text import line, start_message, input_command_user, help_user_text, command_not_found
 from times.times import delay_actions
 from timer.class_timer import Timer 
-from timer.function_timers import create_new_timer, get_timers_list, get_name_number_task, get_lists_numbers_and_names_timers, get_timer_by_number, prints_list_timers, view_all_information_timers, configure_data_to_pandas
+from timer.function_timers import (
+    create_new_timer, get_timers_list, get_name_number_task, 
+    get_lists_numbers_and_names_timers, get_timer_by_number, prints_list_timers,
+    view_all_information_timers, configure_data_to_pandas)
 from exception.diagram_exception import ViewDiagrammError
 from diagram.show_diagram import show_diagram
 from diagram.save_diagram import save_diagram_to_file

@@ -95,7 +95,7 @@ def validate_user_path_diag(user_path: str) -> bool:
 def get_file_path_diagram() -> str:
     """Функция для получения пути до файла, куда нужно будет сохранить диаграмму"""
     today_time: str = get_time_today()
-    path = f"..{SEP}data_program{SEP}{today_time}_diagram.png"
+    path = f"..{SEP}..{SEP}data_program{SEP}{today_time}_diagram.png"
 
     print(f"Пример такого пути: C:{SEP}Users{SEP}User{SEP}Desktop{SEP}diagram.png")
 
