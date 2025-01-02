@@ -114,7 +114,7 @@ while input_user_message not in ("q", "quit",):
 
     # Если пользователь хочет получить информацию обо всех таймерах
     elif input_user_message in ("ia", "info all", "all",):
-        print("Список всех доступных таймеров: ")
+        print("Список таймеров и информации о них: ")
         timers_object_list: list[Timer] = get_timers_list(all_timers_dict)
         view_all_information_timers(timers_object_list)
 
@@ -150,61 +150,70 @@ while input_user_message not in ("q", "quit",):
     delay_actions()
     input_user_message = input(input_command_user)
 
-answer_yes = ["Y", "y", "yes", "Yes", "yEs", "YES", "да", "Да", "дА", "ДА", "+"]
+# Если хотя бы один таймер был создан
+if all_timers_dict:
+    answer_yes = ["Y", "y", "yes", "Yes", "yEs", "YES", "да", "Да", "дА", "ДА", "+"]
 
-print(line)
+    # Значение по умолчанию, когда пользователь будет выходить из программы, у него будет выбор переопределить их
+    question_save_diagram = "нет"
+    question_save_file = "нет"
+    question_view_diagram = "нет"
 
-question_diagram = input("Хотите вывести диаграмму, "
-    "которая будет отображать соотношение посчитанного времени на всех таймерах [N/y]: ") 
+    print("\n", line)
 
-delay_actions()
+    print("Итог работы программы: ")
+    timers_object_list: list[Timer] = get_timers_list(all_timers_dict)
+    view_all_information_timers(timers_object_list)
 
-# Если ответ на вопрос о выводе диаграммы находится в списках да
-if question_diagram in answer_yes:
-    if all_timers_dict:
+    print(line, "\n")
+
+    question_view_diagram = input("Хотите вывести диаграмму, "
+        "которая будет отображать соотношение посчитанного времени на всех таймерах [N/y]: ") 
+
+    delay_actions()
+
+    # Если ответ на вопрос о выводе диаграммы находится в списках да
+    if question_view_diagram in answer_yes:
+
         try:
             show_diagram(all_timers_dict)
 
         except ViewDiagrammError as Error:
             print(f"К сожалению возникла ошибка при выводе диаграммы, текст ошибки: {Error}")
+
     else:
-        print("К сожалению у вас нет таймеров, чтобы делать вывод диаграммы основании их данных")
-
-else:
-    print("Продолжим.")
-
-question_save_diagram = "нет"
+        print("Продолжим.")
 
 
-# Если у пользователя есть хотя бы один таймер
-if all_timers_dict:
     question_save_diagram = input("Хотите сохранить диаграму таймеров в файл [N/y]: ")
     delay_actions()
 
-# Если пользователь хочет сохранить диаграмму
-if question_save_diagram in answer_yes:
-    file_path = get_file_path_diagram()
+    # Если пользователь хочет сохранить диаграмму
+    if question_save_diagram in answer_yes:
+        file_path = get_file_path_diagram()
+        delay_actions()
+        # Сохраняем диаграмму в файл, передавая полученный путь до файла и состояние самой диаграммы
+        save_diagram_to_file(file_path, all_timers_dict)
+        print("Диаграмма была сохранена\n")
+
+
+    question_save_file = input("Хотите сохранить результат работы программы (в виде таблицы) в файл [N/y]: ")
+
     delay_actions()
-    # Сохраняем диаграмму в файл, передавая полученный путь до файла и состояние самой диаграммы
-    save_diagram_to_file(file_path, all_timers_dict)
-    print("Диаграмма была сохранена\n")
 
-question_file = input("Хотите сохранить результат работы программы (в виде таблицы) в файл [N/y]: ")
-
-delay_actions()
-
-# Если ответ на вопрос о сохранении результата программы в файл да
-if question_file in answer_yes:
-    if all_timers_dict:
+    # Если пользователь хочет сохранить результат работы программы в файл
+    if question_save_file in answer_yes:
         timers_object_list: list[Timer] = get_timers_list(all_timers_dict)
         data_pandas: dict[str, list] = configure_data_to_pandas(timers_object_list)
         dataframe_object: pd.DataFrame = create_pandas_object(data_pandas)
         save_dataframe_to_file(dataframe_object)
+
     else:
-        print("К сожалению у вас нет таймеров, чтобы делать вывод результатов в файл")
+        print("Продолжим.")
+    
+    delay_actions()
+
 else:
-    print("Продолжим.")
+    print("Для выведения итогов программы, должен быть создан хотя бы один таймер.")
 
-
-delay_actions()
 print("Досвидания.")
