@@ -13,6 +13,7 @@ from function_diagram import (
     show_diagram, create_pandas_object, get_file_path_diagram, save_diagram_to_file
 )
 from function_files import save_dataframe_to_file
+from save_programm import load_data_to_json
 
 # Словарь который будет содержать все объекты таймера в виде:
 # Название таймера - объект таймера
@@ -23,6 +24,8 @@ print(start_message)
 print(line)
 
 delay_actions()
+
+# TODO: сделать возможность загрузки прогресса из json файла
 
 input_user_message: str = input(input_command_user)
 
@@ -215,5 +218,7 @@ if all_timers_dict:
 
 else:
     print("Для выведения итогов программы, должен быть создан хотя бы один таймер.")
+
+load_data_to_json(all_timers_dict)
 
 print("Досвидания.")
