@@ -31,7 +31,7 @@ def get_file_path() -> str:
     вводит некорректный путь, то возвращается путь по умолчанию.
     """
     today_time: str = get_time_today()
-    path = f"..{SEP}..{SEP}data_program{SEP}{today_time}_timer_data.txt"
+    path = f"..{SEP}data_program{SEP}{today_time}_timer_data.txt"
 
     print(f"Пример такого пути: C:{SEP}Users{SEP}User{SEP}Desktop{SEP}my_prod.txt")
     user_path = input("Введите путь и название файла, " 

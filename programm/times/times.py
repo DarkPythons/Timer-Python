@@ -3,7 +3,7 @@
 import datetime
 import time
 
-from config import TIME_DELAY, TEXT_DELAY
+from config import TIME_DELAY, TEXT_DELAY, LINE_SIZE, TEXT_DELAY_EXIT
 
 def get_time_today() -> str:
     """
@@ -32,4 +32,12 @@ def delay_actions() -> str:
     
     print("")
 
+
+def delay_actions_finish():
+
+    part_of_delay = TIME_DELAY / LINE_SIZE
+
+    for index in range(0, LINE_SIZE):
+        print(TEXT_DELAY_EXIT, end="", flush=True)
+        time.sleep(part_of_delay)
     

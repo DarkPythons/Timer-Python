@@ -31,7 +31,6 @@ def get_timers_list(all_timers_dict: dict[str, Timer]) -> list[Timer]:
     # Если объектов таймера еще нет
     if not timers_object_list:
         print("У вас пока нет таймеров, обратитесь к команде create.")
-        time.sleep(1)
 
     return timers_object_list
 

@@ -5,7 +5,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from times.times import get_time_today
+from times.times import get_time_today, delay_actions
 from config import SEP
 
 
@@ -95,7 +95,7 @@ def validate_user_path_diag(user_path: str) -> bool:
 def get_file_path_diagram() -> str:
     """Функция для получения пути до файла, куда нужно будет сохранить диаграмму"""
     today_time: str = get_time_today()
-    path = f"..{SEP}..{SEP}data_program{SEP}{today_time}_diagram.png"
+    path = f"..{SEP}data_program{SEP}{today_time}_diagram.png"
 
     print(f"Пример такого пути: C:{SEP}Users{SEP}User{SEP}Desktop{SEP}diagram.png")
 
@@ -103,6 +103,8 @@ def get_file_path_diagram() -> str:
         "куда бы вы хотели сохранить диаграмму (не обязательно): ")
 
     valide_path: bool = validate_user_path_diag(user_path)
+
+    delay_actions()
 
     # Если путь, который ввёл пользователь валиден
     if valide_path:

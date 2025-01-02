@@ -6,7 +6,7 @@ python3 timer_main.py
 
 import pandas as pd
 from text import line, start_message, input_command_user, help_user_text, command_not_found
-from times.times import delay_actions
+from times.times import delay_actions, delay_actions_finish
 from timer.class_timer import Timer 
 from timer.function_timers import (
     create_new_timer, get_timers_list, get_name_number_task, 
@@ -166,19 +166,39 @@ if all_timers_dict:
     question_save_diagram = "нет"
     question_save_file = "нет"
     question_view_diagram = "нет"
+    question_save_json = "нет"
 
-    print("\n", line)
+    print()
+    delay_actions_finish()
 
     print("Итог работы программы: ")
     timers_object_list: list[Timer] = get_timers_list(all_timers_dict)
     view_all_information_timers(timers_object_list)
 
-    print(line, "\n")
+    delay_actions_finish()
+    print("\n")
+
+    question_save_json = input("Хотите сохранить результат работы программы в json файл, чтобы в дальнейшем восстановить работу с таймерами, которые у вас были созданы сейчас [N/y]: ")
+
+    # Если пользователь хочет сохранить данные о работе в json файл
+    if question_save_json in answer_yes:
+        print()
+        delay_actions_finish()
+        print()
+        save_data_to_json(all_timers_dict)
+        
+
+    if question_save_json in answer_yes:
+        print()
+        delay_actions_finish()
+        print()
+
+    print()
 
     question_view_diagram = input("Хотите вывести диаграмму, "
         "которая будет отображать соотношение посчитанного времени на всех таймерах [N/y]: ") 
 
-    delay_actions()
+
 
     # Если ответ на вопрос о выводе диаграммы находится в списках да
     if question_view_diagram in answer_yes:
@@ -189,41 +209,60 @@ if all_timers_dict:
         except ViewDiagrammError as Error:
             print(f"К сожалению возникла ошибка при выводе диаграммы, текст ошибки: {Error}")
 
-    else:
-        print("Продолжим.")
+    if question_view_diagram in answer_yes:
+        print()
+        delay_actions_finish()
+        print()
 
+    print()
 
     question_save_diagram = input("Хотите сохранить диаграму таймеров в файл [N/y]: ")
-    delay_actions()
+
+
 
     # Если пользователь хочет сохранить диаграмму
     if question_save_diagram in answer_yes:
+        print()
+        delay_actions_finish()
+        print("\n")
+
+
         file_path = get_file_path_diagram()
-        delay_actions()
+
         # Сохраняем диаграмму в файл, передавая полученный путь до файла и состояние самой диаграммы
         save_diagram_to_file(file_path, all_timers_dict)
-        print("Диаграмма была сохранена\n")
+        print("Сохранение диаграммы в файл удалось.")
+
+    if question_save_diagram in answer_yes:
+        print()
+        delay_actions_finish()
+        print()
+        
+    print()
 
 
     question_save_file = input("Хотите сохранить результат работы программы (в виде таблицы) в файл [N/y]: ")
 
-    delay_actions()
 
     # Если пользователь хочет сохранить результат работы программы в файл
     if question_save_file in answer_yes:
+
+        print()
+        delay_actions_finish()
+        print("\n")
+
         timers_object_list: list[Timer] = get_timers_list(all_timers_dict)
         data_pandas: dict[str, list] = configure_data_to_pandas(timers_object_list)
         dataframe_object: pd.DataFrame = create_pandas_object(data_pandas)
         save_dataframe_to_file(dataframe_object)
+        print("Сохранение таблицы итогов в файл удалось")
 
-    else:
-        print("Продолжим.")
-    
-    delay_actions()
+    print()
+
 
 else:
     print("Для выведения итогов программы, должен быть создан хотя бы один таймер.")
 
-save_data_to_json(all_timers_dict)
+
 
 print("Досвидания.")
