@@ -40,4 +40,9 @@ def delay_actions_finish():
     for index in range(0, LINE_SIZE):
         print(TEXT_DELAY_EXIT, end="", flush=True)
         time.sleep(part_of_delay)
-    
+
+
+def get_padding_and_line():
+    print()
+    delay_actions_finish()
+    print()

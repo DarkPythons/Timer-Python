@@ -62,7 +62,7 @@ def get_list_numbers_timers(timers_object_list: list[Timer]) -> list[int, int]:
     из которого мы будем получать номера таймеров
     Возвращает список целых чисел, то есть наших номеров
     """
-    list_numbers_timers = [timers_object.timer_object_count for timers_object in timers_object_list]
+    list_numbers_timers = [timers_object.number_timer for timers_object in timers_object_list]
     return list_numbers_timers
 
 def get_list_names_timers(timers_object_list: list[Timer]) -> list[str, str]:
@@ -198,6 +198,6 @@ def get_list_seconds_timers(timers_object_list: list[Timer]) -> list[int, int]:
     timers_object_list - список всех объектов таймеров
     """
 
-    seconds_list: list[int, int] = [timer_object.count_time for timer_object in timers_object_list]
+    seconds_list: list[int, int] = [timer_object.count_second for timer_object in timers_object_list]
     return seconds_list
 

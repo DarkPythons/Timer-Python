@@ -7,19 +7,24 @@ class Timer(object):
     # Количество таймеров
     __count_of_timer: int = 0
     
-    def __init__(self, timer_name: str) -> None:
+    def __init__(self, timer_name: str, count_second = 0, number_timer = None) -> None:
         """
         Метод инициализации новых объектов таймеров
         self - сам объект таймера
         timer_name - название таймера
         """
         self.name_timer: str = timer_name
-        self.count_time: int = 0
-        self.timer_object_count: int = self.__count_of_timer
-        self.__add_count()
+        self.count_second: int = count_second
+        # Если как параметр был передан номер таймера
+        if number_timer:
+            self.number_timer = number_timer
+        else:
+            self.number_timer: int = self.__count_of_timer
+            # Делаем прибавление номера для следующего таймера
+            self.__add_number_after_new_timer()
 
     @classmethod
-    def __add_count(cls) -> None:
+    def __add_number_after_new_timer(cls) -> None:
         """Метод для увеличения количества таймеров образованных от класса Timer"""
         cls.__count_of_timer += 1
 
@@ -47,7 +52,7 @@ class Timer(object):
         print(f"{times_dict['seconds']} секунд")
 
         # Делаем прибавление нашего получившегося времени которое было насчитано к общему таймеру
-        self.count_time += time_count
+        self.count_second += time_count
 
         # Делаем вызов метода, который секунды у объекта таймера переведет в часы/минуты/секунды
         times_dict_general: dict[str, int] = self.second_to_hour_min_sec()
@@ -64,7 +69,7 @@ class Timer(object):
         self - сам объект таймера
         """
         # Ставим общее количество времени на таймере на ноль
-        self.count_time: int = 0
+        self.count_second: int = 0
         print(f"'{self.name_timer}' был сброшен на 0.")
 
     @staticmethod
@@ -101,7 +106,7 @@ class Timer(object):
         # Делаем перевод секунд, которыe есть у таймера в часы/минуты/секунды
         times_dict_timer: dict[str, int] = self.second_to_hour_min_sec()
         print()
-        print(f"Номер таймера: {self.timer_object_count}")
+        print(f"Номер таймера: {self.number_timer}")
         print(f"Название таймера: '{self.name_timer}'")
         print(f"Часы: {times_dict_timer['hours']}")
         print(f"Минуты: {times_dict_timer['minutes']}")
@@ -111,14 +116,14 @@ class Timer(object):
     def second_to_hour_min_sec(self) -> dict[str, int]:
         """
         Метод для перевода секунд на таймере в часы/минуты/секунды
-        self - сам объект таймера, внутри которого по атрибуту count_time
+        self - сам объект таймера, внутри которого по атрибуту count_second
         лежит количество секунд, которое насчитал таймер, их мы и переводим
         Возвращается словарь с количеством часов, минут и секунд которое лежало в таймере
         """
         # Делаем перевод секунд в часы/минуты/секунды
-        hours_time: int = self.count_time // 3600
-        minutes_time: int = (self.count_time // 60) % 60
-        second_time: int = round(self.count_time % 60, 3)
+        hours_time: int = self.count_second // 3600
+        minutes_time: int = (self.count_second // 60) % 60
+        second_time: int = round(self.count_second % 60, 3)
 
         times_dict = {
             "hours" : hours_time,
@@ -130,5 +135,5 @@ class Timer(object):
 
     def __str__(self) -> str:
         """Метод для красивого и информационного вывода объектов таймера"""
-        return f"[{self.timer_object_count}] {self.name_timer}"
+        return f"[{self.number_timer}] {self.name_timer}"
     

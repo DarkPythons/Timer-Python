@@ -6,7 +6,7 @@ python3 timer_main.py
 
 import pandas as pd
 from text import line, start_message, input_command_user, help_user_text, command_not_found
-from times.times import delay_actions, delay_actions_finish
+from times.times import delay_actions, delay_actions_finish, get_padding_and_line
 from timer.class_timer import Timer 
 from timer.function_timers import (
     create_new_timer, get_timers_list, get_name_number_task, 
@@ -16,6 +16,7 @@ from exception.diagram_exception import ViewDiagrammError
 from diagram.show_diagram import show_diagram
 from diagram.save_diagram import save_diagram_to_file
 from save_load_json.save_programm import save_data_to_json
+from save_load_json.load_programm import load_data_from_json
 from diagram.utils import  create_pandas_object, get_file_path_diagram
 from save_file.save_files import save_dataframe_to_file
 
@@ -24,11 +25,24 @@ from save_file.save_files import save_dataframe_to_file
 # Название таймера - объект таймера
 all_timers_dict: dict = {}
 
+ANSWERS_YES = ("Y", "y", "yes", "Yes", "yEs", "YES", "да", "Да", "дА", "ДА", "+")
+
 # Приветствие с пользователем
 print(start_message)
-print(line)
+delay_actions_finish()
 
-delay_actions()
+print("\n")
+
+question_load_json = input("Хотите загрузить прогресс работы с таймерами из json файла [N/y]: ")
+
+
+if question_load_json in ANSWERS_YES:
+    informations_timers_from_json = load_data_from_json()
+    if informations_timers_from_json:
+        print("Загрузка данных из json файла прошла успешно, вы можете посмотреть загруженную информацию при помощи команды ia.")
+        all_timers_dict = informations_timers_from_json
+    elif informations_timers_from_json == {}:
+        print("Загрузка данных из json файла прошла успешно, но в нём не было информации.")
 
 # TODO: сделать возможность загрузки прогресса из json файла
 
@@ -145,6 +159,8 @@ while input_user_message not in ("q", "quit",):
                 timer_object: Timer = get_timer_by_number(timers_object_list, number_timer)
                 timer_object.print_information()
 
+    
+
             else:
                 print("Названия или номера с таким таймеров просто нет, обратитесь к команде create.")
     # Если пользователь запросил справку по командам    
@@ -160,7 +176,6 @@ while input_user_message not in ("q", "quit",):
 
 # Если хотя бы один таймер был создан
 if all_timers_dict:
-    answer_yes = ["Y", "y", "yes", "Yes", "yEs", "YES", "да", "Да", "дА", "ДА", "+"]
 
     # Значение по умолчанию, когда пользователь будет выходить из программы, у него будет выбор переопределить их
     question_save_diagram = "нет"
@@ -181,17 +196,13 @@ if all_timers_dict:
     question_save_json = input("Хотите сохранить результат работы программы в json файл, чтобы в дальнейшем восстановить работу с таймерами, которые у вас были созданы сейчас [N/y]: ")
 
     # Если пользователь хочет сохранить данные о работе в json файл
-    if question_save_json in answer_yes:
-        print()
-        delay_actions_finish()
-        print()
+    if question_save_json in ANSWERS_YES:
+        get_padding_and_line()
         save_data_to_json(all_timers_dict)
         
 
-    if question_save_json in answer_yes:
-        print()
-        delay_actions_finish()
-        print()
+    if question_save_json in ANSWERS_YES:
+        get_padding_and_line()
 
     print()
 
@@ -201,7 +212,7 @@ if all_timers_dict:
 
 
     # Если ответ на вопрос о выводе диаграммы находится в списках да
-    if question_view_diagram in answer_yes:
+    if question_view_diagram in ANSWERS_YES:
 
         try:
             show_diagram(all_timers_dict)
@@ -209,10 +220,8 @@ if all_timers_dict:
         except ViewDiagrammError as Error:
             print(f"К сожалению возникла ошибка при выводе диаграммы, текст ошибки: {Error}")
 
-    if question_view_diagram in answer_yes:
-        print()
-        delay_actions_finish()
-        print()
+    if question_view_diagram in ANSWERS_YES:
+        get_padding_and_line()
 
     print()
 
@@ -221,10 +230,9 @@ if all_timers_dict:
 
 
     # Если пользователь хочет сохранить диаграмму
-    if question_save_diagram in answer_yes:
+    if question_save_diagram in ANSWERS_YES:
+        get_padding_and_line()
         print()
-        delay_actions_finish()
-        print("\n")
 
 
         file_path = get_file_path_diagram()
@@ -233,10 +241,8 @@ if all_timers_dict:
         save_diagram_to_file(file_path, all_timers_dict)
         print("Сохранение диаграммы в файл удалось.")
 
-    if question_save_diagram in answer_yes:
-        print()
-        delay_actions_finish()
-        print()
+    if question_save_diagram in ANSWERS_YES:
+        get_padding_and_line()
         
     print()
 
@@ -245,11 +251,10 @@ if all_timers_dict:
 
 
     # Если пользователь хочет сохранить результат работы программы в файл
-    if question_save_file in answer_yes:
+    if question_save_file in ANSWERS_YES:
 
+        get_padding_and_line()
         print()
-        delay_actions_finish()
-        print("\n")
 
         timers_object_list: list[Timer] = get_timers_list(all_timers_dict)
         data_pandas: dict[str, list] = configure_data_to_pandas(timers_object_list)
