@@ -2,6 +2,7 @@ import json
 
 from config import SEP
 from times.times import delay_actions
+from exception.json_exception import JsonReadFileError, JsonWriteFileError
 
 def validate_user_path_json(user_path):
     valide = True
@@ -21,7 +22,7 @@ def validate_user_path_json(user_path):
         with open(user_path, "r") as file:
             json.load(file)
 
-    except (PermissionError, FileNotFoundError, json.decoder.JSONDecodeError):
+    except (JsonReadFileError, JsonWriteFileError):
         valide = False
 
     return valide

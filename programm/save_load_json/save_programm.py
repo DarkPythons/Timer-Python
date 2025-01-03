@@ -1,3 +1,9 @@
+"""
+Содержит основные функции для сохранения прогресса программы в файл json.
+create_data_to_json - создать словарь, который нужно будет поместить в json файл 
+save_dict_data_json - сохранение словаря данных в файл json по указанному пути
+save_data_to_json - сохранение данных в json
+"""
 
 import json
 
@@ -6,6 +12,10 @@ from .utils import get_json_path_save
 from exception.json_exception import JsonFileError
 
 def create_data_to_json(all_timers_dict: dict[str, Timer]):
+    """
+    Создает и возвращает словарь, который нужно будет записать в json файл.
+    all_timers_dict - словарь с объектами таймеров программы, из которых нужно брать информацию
+    """
     dict_finish = {}
     for one_object_timer in all_timers_dict.values():
         
@@ -21,6 +31,11 @@ def create_data_to_json(all_timers_dict: dict[str, Timer]):
     return dict_finish
 
 def save_dict_data_json(dict_data_to_json, json_path):
+    """
+    Сохраняет словарь из create_data_to_json в файл json по определенному пути.
+    dict_data_to_json - словарь, который нужно сохранить
+    json_path - путь до json файла
+    """
     save = True
     try:
         with open(json_path, "w") as file_json:
@@ -35,6 +50,11 @@ def save_dict_data_json(dict_data_to_json, json_path):
 
 
 def save_data_to_json(all_timers_dict):
+    """
+    Функция для сохранения данных программы в json файл.
+    all_timers_dict - словарь со всеми объектами таймеров программы, откуда и брать информацию.
+    """
+
     # Создаем словарь данных, который должен будет пойти в json
     dict_data_to_json = create_data_to_json(all_timers_dict)
     print()

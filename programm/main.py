@@ -1,7 +1,7 @@
 """
 Главный файл через который у нас будет происходить запуск всей программы таймера
-python timer_main.py
-python3 timer_main.py
+python main
+python3 main.py
 """
 
 import pandas as pd

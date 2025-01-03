@@ -1,5 +1,6 @@
 """
-Файл, который содержит класс самого таймера.
+Содержит класс самого таймера.
+Timer - класс таймеров, которые будут использоваться в программе
 """
 
 import time
@@ -13,12 +14,15 @@ class Timer(object):
         Метод инициализации новых объектов таймеров
         self - сам объект таймера
         timer_name - название таймера
+        count_second - изначальное количество секунд на таймере (по умолчанию 0)
+        number_timer - номер таймера (устанавливается автоматически)
         """
         self.name_timer: str = timer_name
         self.count_second: int = count_second
         # Если как параметр был передан номер таймера
         if number_timer:
             self.number_timer = number_timer
+            self.__count_of_timer  = self.number_timer + 1
         else:
             self.number_timer: int = self.__count_of_timer
             # Делаем прибавление номера для следующего таймера

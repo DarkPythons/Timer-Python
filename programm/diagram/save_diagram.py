@@ -1,5 +1,7 @@
 """
-Модуль, где находятся основные функции для сохранения диагрммы в файл
+Основные функции для сохранения диаграммы в файл
+save_diagram_to_file - сохранить диаграмму в файл, принимает путь до самого файла и словарь, информацию
+из которого нужно сохранить
 """
 
 import matplotlib.pyplot as plt
@@ -7,8 +9,6 @@ import matplotlib.pyplot as plt
 from timer.class_timer import Timer
 from timer.function_timers import get_timers_list, get_list_names_timers, get_list_seconds_timers
 from .utils import create_diagram_object
-
-
 
 def save_diagram_to_file(file_path: str, dict_timers_all: dict[str, Timer]) -> None:
     """

@@ -1,3 +1,8 @@
+"""
+Содержит основные функции для работы с файлами (валидация/запрашивание пути)
+validate_user_path - провалидировать пользователький путь на возможность изменений.
+get_file_path - получить путь, куда делать сохранение результатов.
+"""
 
 from config import SEP
 from times.times import get_time_today, delay_actions
@@ -6,7 +11,7 @@ from times.times import get_time_today, delay_actions
 def validate_user_path(user_path: str) -> bool:
     """
     Функция для валидации пути, который ввёл пользователь
-    user_path - путь, который нужно проверить, то есть который ввёл пользователь
+    user_path - путь до файла, который нужно проверить на возможность изменений и саму запись пути
     """
 
     valide = True
