@@ -2,9 +2,8 @@
 Файл, который содержит основные функции для работы программы
 """
 
-import pandas as pd
-import time
 from _collections_abc import dict_values
+import pandas as pd
 
 from timer.class_timer import Timer
 

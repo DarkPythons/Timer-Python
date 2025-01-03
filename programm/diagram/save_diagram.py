@@ -3,6 +3,7 @@
 """
 
 import matplotlib.pyplot as plt
+
 from timer.class_timer import Timer
 from timer.function_timers import get_timers_list, get_list_names_timers, get_list_seconds_timers
 from .utils import create_diagram_object

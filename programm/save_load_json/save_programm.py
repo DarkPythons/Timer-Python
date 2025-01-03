@@ -1,9 +1,8 @@
 
 import json
+
 from timer.class_timer import Timer
 from .utils import get_json_path_save
-from config import SEP
-from times.times import delay_actions
 from exception.json_exception import JsonFileError
 
 def create_data_to_json(all_timers_dict: dict[str, Timer]):

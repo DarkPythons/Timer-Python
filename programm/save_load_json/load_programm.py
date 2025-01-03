@@ -3,12 +3,10 @@
 """
 
 import json
+
 from timer.class_timer import Timer
 from .utils import get_json_path_load
 from config import SEP
-from times.times import delay_actions
-from exception.json_exception import JsonFileError
-
 
 
 def get_data_from_json(path_json: str):

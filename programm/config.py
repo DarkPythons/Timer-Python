@@ -1,6 +1,7 @@
 """Модуль с настройками работы программы в целом."""
 
 import os
+
 from utils import get_terminal_user_width
 
 # Количество "-" при начальном отступе

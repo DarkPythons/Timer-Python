@@ -5,6 +5,7 @@ python3 timer_main.py
 """
 
 import pandas as pd
+
 from text import line, start_message, input_command_user, help_user_text, command_not_found
 from times.times import delay_actions, delay_actions_finish, get_padding_and_line
 from timer.class_timer import Timer 

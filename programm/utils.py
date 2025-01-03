@@ -1,8 +1,6 @@
 
 import os
 
-    
-
 
 def get_terminal_user_width():
     width = 100

@@ -1,8 +1,7 @@
-from timer.class_timer import Timer
+import json
+
 from config import SEP
 from times.times import delay_actions
-from exception.json_exception import JsonFileError
-import json
 
 def validate_user_path_json(user_path):
     valide = True
