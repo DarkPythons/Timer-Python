@@ -9,8 +9,7 @@ load_data_from_json - сделать загрузку данных из файл
 import json
 
 from timer.class_timer import Timer
-from .utils import get_json_path_load
-from config import SEP
+from .load_utils import get_json_path_load
 
 
 def get_data_from_json(path_json: str):
