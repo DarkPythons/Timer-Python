@@ -10,7 +10,7 @@ from times.times import delay_actions
 from .utils import validate_user_path_json
 from times.times import delay_actions, get_padding_and_line
 
-def get_command_by_user(default_path):
+def get_command_by_user(default_path: str) -> str:
     """
     Делает запрос пользователю на ввод команды, которая будет определять, по какому пути открывать
     json файл для загрузки его данных.

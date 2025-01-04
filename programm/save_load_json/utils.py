@@ -5,19 +5,17 @@ validate_user_path_json - валидация пути до json файла, гд
 
 import json
 
-from config import SEP
-from times.times import delay_actions
 from exception.json_exception import JsonReadFileError, JsonWriteFileError
 from json.decoder import JSONDecodeError
 
-def validate_user_path_json(user_path):
+def validate_user_path_json(user_path: str) -> bool:
     """
     Функция для валидации пути к файлу json и самого файла json при помощи попытки его чтения.
     user_path - путь и сам файл, который нужно проверить на корректность
     """
-    valide = True
+    valide: bool = True
 
-    len_path = len(user_path)
+    len_path: int = len(user_path)
     if len_path < 6:
         valide = False
     if len_path > 6:

@@ -9,7 +9,7 @@ class Timer(object):
     # Количество таймеров
     __count_of_timer: int = 0
     
-    def __init__(self, timer_name: str, count_second = 0, number_timer = None) -> None:
+    def __init__(self, timer_name: str, count_second: int = 0, number_timer: int = None) -> None:
         """
         Метод инициализации новых объектов таймеров
         self - сам объект таймера
