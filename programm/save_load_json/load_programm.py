@@ -11,7 +11,6 @@ import json
 from timer.class_timer import Timer
 from .load_utils import get_json_path_load
 
-
 def get_data_from_json(path_json: str) -> dict[str, dict[str, int|str]]:
     """
     Делает чтение файла json по указанному пути и возврат данных оттуда в виде словаря
@@ -21,7 +20,6 @@ def get_data_from_json(path_json: str) -> dict[str, dict[str, int|str]]:
     with open(path_json, "r") as file_open:
         json_data: dict[str, dict[str, int|str]] = json.load(file_open)
     return dict(json_data)
-
 
 def configurate_timers_info(dict_from_json: dict[str, dict[str, int|str]]) -> dict[str, Timer]:
     """
@@ -48,7 +46,6 @@ def configurate_timers_info(dict_from_json: dict[str, dict[str, int|str]]) -> di
             print("Загрузить объект таймера не удалось, повреждение данных в файле, проверьте свой json файл.")
 
     return timers_informaion_dict
-
 
 def load_data_from_json() -> dict[str, Timer]:
     """

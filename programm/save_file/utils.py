@@ -7,13 +7,11 @@ get_file_path - получить путь, куда делать сохране�
 from config import SEP
 from times.times import get_time_today, delay_actions
 
-
 def validate_user_path(user_path: str) -> bool:
     """
     Функция для валидации пути, который ввёл пользователь
     user_path - путь до файла, который нужно проверить на возможность изменений и саму запись пути
     """
-
     valide = True
     len_path = len(user_path)
     if len_path < 5:

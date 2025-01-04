@@ -104,7 +104,6 @@ def get_lists_numbers_and_names_timers(
     list_name_timers: list[str, str] = get_list_names_timers(timers_object_list)
     return list_number_timers, list_name_timers
 
-
 def create_lists_hour_min_sec(timers_object_list: list[Timer]) -> tuple[list[int|float]]:
     """
     Функция для создания списков часов, минут и секунд, которые будут использоваться как значения
@@ -131,8 +130,6 @@ def create_lists_hour_min_sec(timers_object_list: list[Timer]) -> tuple[list[int
 
     tuple_times: tuple[list] = (list_hours_timers, list_minutes_timers, list_seconds_timers,)
     return tuple_times
-
-
 
 def configure_data_to_pandas(timers_object_list: list[Timer]) -> dict[str, list]:
     """
@@ -171,7 +168,6 @@ def view_data_in_pandas_table(data_to_pandas: dict[str, list]) -> None:
     data_frame: pd.DataFrame = pd.DataFrame(data_to_pandas)
     # Выводим нашу таблицу данных
     print(data_frame)
-
 
 def view_all_information_timers(timers_object_list: list[Timer]) -> None:
     """

@@ -7,7 +7,6 @@ import pandas as pd
 
 from .utils import get_file_path
 
-
 def save_dataframe_to_file(pandas_dataframe: pd.DataFrame) -> bool:
     """
     Делает сохранения данных (которые взяты как итог работы программы) в файл с расширением txt.

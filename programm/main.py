@@ -138,7 +138,6 @@ while input_user_message not in ("q", "quit",):
         if timers_object_list:
             prints_list_timers(timers_object_list)
 
-
     # Если пользователь хочет получить информацию обо всех таймерах
     elif input_user_message in ("ia", "info all", "all",):
         print("Список таймеров и информации о них: ")
@@ -205,7 +204,6 @@ if all_timers_dict:
         get_padding_and_line()
         save_data_to_json(all_timers_dict)
         
-
     if question_save_json in ANSWERS_YES:
         get_padding_and_line()
 
@@ -213,8 +211,6 @@ if all_timers_dict:
 
     question_view_diagram = input("Хотите вывести диаграмму, "
         "которая будет отображать соотношение посчитанного времени на всех таймерах [N/y]: ") 
-
-
 
     # Если ответ на вопрос о выводе диаграммы находится в списках да
     if question_view_diagram in ANSWERS_YES:
@@ -232,13 +228,10 @@ if all_timers_dict:
 
     question_save_diagram = input("Хотите сохранить диаграму таймеров в файл [N/y]: ")
 
-
-
     # Если пользователь хочет сохранить диаграмму
     if question_save_diagram in ANSWERS_YES:
         get_padding_and_line()
         print()
-
 
         file_path = get_file_path_diagram()
 
@@ -251,9 +244,7 @@ if all_timers_dict:
         
     print()
 
-
     question_save_file = input("Хотите сохранить результат работы программы (в виде таблицы) в файл [N/y]: ")
-
 
     # Если пользователь хочет сохранить результат работы программы в файл
     if question_save_file in ANSWERS_YES:
@@ -268,11 +259,7 @@ if all_timers_dict:
         print("Сохранение таблицы итогов в файл удалось")
 
     print()
-
-
 else:
     print("Для выведения итогов программы, должен быть создан хотя бы один таймер.")
-
-
 
 print("Досвидания.")

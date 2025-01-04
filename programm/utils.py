@@ -11,7 +11,6 @@ def get_terminal_user_width():
     используется для красивого вывода строки ожидания.
     """
     width = 100
-    
     # Получаем размеры терминала по оси x и y
     sizes_terminal = os.get_terminal_size()
     try:
@@ -21,5 +20,4 @@ def get_terminal_user_width():
         pass
     else:
         width = width_terminal
-
     return width

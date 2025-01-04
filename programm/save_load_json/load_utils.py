@@ -30,7 +30,6 @@ dp [default path] - использовать json файл по пути по у
     print()
     return user_command  
 
-
 def get_json_path_load() -> str:
     """
     Функция для получения пути до файла json, откуда нужно брать данные для загрузки прогресса.
@@ -41,10 +40,8 @@ def get_json_path_load() -> str:
     print(f"Пример такого пути: C:{SEP}Users{SEP}User{SEP}Desktop{SEP}my_save_prog.json")
     user_path = input("Введите путь и название файла (с расширением json), " 
         "откуда бы вы хотели взять прогресс работы программы (не обязательно): ")
-
     delay_actions()
     print()
-
     path = ""
 
     # Если пользователь не захотел вводить путь до файла, то берем путь по умолчанию

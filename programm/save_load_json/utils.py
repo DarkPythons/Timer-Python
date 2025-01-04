@@ -24,13 +24,10 @@ def validate_user_path_json(user_path: str) -> bool:
     # Если путь всё ещё валиден, нужно делать ещё проверку
     if valide:
         try:
-
             with open(user_path, "a") as file:
                 file.write("")
-
             with open(user_path, "r") as file:
                 json.load(file)
-
         except (JsonReadFileError, JsonWriteFileError, FileNotFoundError, JSONDecodeError):
             valide = False
 

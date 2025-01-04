@@ -117,7 +117,6 @@ class Timer(object):
         print(f"Минуты: {times_dict_timer['minutes']}")
         print(f"Секунды: {times_dict_timer['seconds']}")
 
-
     def second_to_hour_min_sec(self) -> dict[str, int]:
         """
         Метод для перевода секунд на таймере в часы/минуты/секунды
@@ -137,8 +136,6 @@ class Timer(object):
         }
         return times_dict
 
-
     def __str__(self) -> str:
         """Метод для красивого и информационного вывода объектов таймера"""
         return f"[{self.number_timer}] {self.name_timer}"
-    

@@ -6,7 +6,6 @@ delay_actions_line - сделать задержку и красивый выв�
 get_padding_and_line - сделать отсупы для красивой задержки
 """
 
-
 import datetime
 import time
 
@@ -39,18 +38,15 @@ def delay_actions() -> str:
     
     print("")
 
-
 def delay_actions_line():
     """
     Функция для вывода красивой линии прогресса
     """
-
     part_of_delay = TIME_DELAY / LINE_SIZE
 
     for index in range(0, LINE_SIZE):
         print(TEXT_DELAY_EXIT, end="", flush=True)
         time.sleep(part_of_delay)
-
 
 def get_padding_and_line():
     print()
