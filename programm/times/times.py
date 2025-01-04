@@ -2,7 +2,7 @@
 Содержит функции для работы со временем
 get_time_today - получить день, месяц и год в формате: dd.mm.yyyy
 delay_actions - сделать задержку и вывод текста задержки
-delay_actions_finish - сделать задержку и красивый вывод текста задержки на всю ширину терминала
+delay_actions_line - сделать задержку и красивый вывод текста задержки на всю ширину терминала
 get_padding_and_line - сделать отсупы для красивой задержки
 """
 
@@ -28,7 +28,7 @@ def get_time_today() -> str:
 
 def delay_actions() -> str:
     """
-    Функция, для задрежки действий пользователя, то есть чтобы была иллюзия загрузки
+    Функция для вывода прогресса выполнения действий пользователя
     """
 
     part_of_delay = TIME_DELAY / 3
@@ -40,7 +40,10 @@ def delay_actions() -> str:
     print("")
 
 
-def delay_actions_finish():
+def delay_actions_line():
+    """
+    Функция для вывода красивой линии прогресса
+    """
 
     part_of_delay = TIME_DELAY / LINE_SIZE
 
@@ -51,5 +54,5 @@ def delay_actions_finish():
 
 def get_padding_and_line():
     print()
-    delay_actions_finish()
+    delay_actions_line()
     print()

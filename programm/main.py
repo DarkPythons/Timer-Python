@@ -7,7 +7,7 @@ python3 main.py
 import pandas as pd
 
 from text import line, start_message, input_command_user, help_user_text, command_not_found
-from times.times import delay_actions, delay_actions_finish, get_padding_and_line
+from times.times import delay_actions, delay_actions_line, get_padding_and_line
 from timer.class_timer import Timer 
 from timer.function_timers import (
     create_new_timer, get_timers_list, get_name_number_task, 
@@ -30,22 +30,26 @@ ANSWERS_YES = ("Y", "y", "yes", "Yes", "yEs", "YES", "да", "Да", "дА", "Д
 
 # Приветствие с пользователем
 print(start_message)
-delay_actions_finish()
+delay_actions_line()
 
 print("\n")
 
 question_load_json = input("Хотите загрузить прогресс работы с таймерами из json файла [N/y]: ")
 
 
+# Если пользователь хочет загрузить прогресс программы из json файла
 if question_load_json in ANSWERS_YES:
+
+    get_padding_and_line()
+    print()
+
     informations_timers_from_json = load_data_from_json()
     if informations_timers_from_json:
         print("Загрузка данных из json файла прошла успешно, вы можете посмотреть загруженную информацию при помощи команды ia.")
+        get_padding_and_line()
         all_timers_dict = informations_timers_from_json
     elif informations_timers_from_json == {}:
         print("Загрузка данных из json файла прошла успешно, но в нём не было информации.")
-
-# TODO: сделать возможность загрузки прогресса из json файла
 
 input_user_message: str = input(input_command_user)
 
@@ -185,13 +189,13 @@ if all_timers_dict:
     question_save_json = "нет"
 
     print()
-    delay_actions_finish()
+    delay_actions_line()
 
     print("Итог работы программы: ")
     timers_object_list: list[Timer] = get_timers_list(all_timers_dict)
     view_all_information_timers(timers_object_list)
 
-    delay_actions_finish()
+    delay_actions_line()
     print("\n")
 
     question_save_json = input("Хотите сохранить результат работы программы в json файл, чтобы в дальнейшем восстановить работу с таймерами, которые у вас были созданы сейчас [N/y]: ")

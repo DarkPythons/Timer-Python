@@ -7,14 +7,14 @@ JsonWriteFileError - Исключение записи данных в json фа
 
 from json.decoder import JSONDecodeError
 
-class JsonFileError(PermissionError, FileNotFoundError):
+class JsonFileError(FileNotFoundError, PermissionError):
     """Базовое исключение связянное с файлами json"""
     pass
 
-class JsonReadFileError(JsonFileError, JSONDecodeError):
+class JsonReadFileError(JSONDecodeError, JsonFileError):
     """Исключение связанное с неправильным или невозможностью чтения json файла"""
     pass
 
-class JsonWriteFileError(JsonFileError, JSONDecodeError):
+class JsonWriteFileError(JSONDecodeError, JsonFileError):
     """Исключение связанное с невозможностью открытия или записи данных в json файл"""
     pass

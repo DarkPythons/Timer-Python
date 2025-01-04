@@ -8,6 +8,7 @@ import json
 from config import SEP
 from times.times import delay_actions
 from exception.json_exception import JsonReadFileError, JsonWriteFileError
+from json.decoder import JSONDecodeError
 
 def validate_user_path_json(user_path):
     """
@@ -22,16 +23,18 @@ def validate_user_path_json(user_path):
     if len_path > 6:
         if user_path[-5:] != ".json":
             valide = False
-    try:
+    # Если путь всё ещё валиден, нужно делать ещё проверку
+    if valide:
+        try:
 
-        with open(user_path, "a") as file:
-            file.write("")
+            with open(user_path, "a") as file:
+                file.write("")
 
-        with open(user_path, "r") as file:
-            json.load(file)
+            with open(user_path, "r") as file:
+                json.load(file)
 
-    except (JsonReadFileError, JsonWriteFileError):
-        valide = False
+        except (JsonReadFileError, JsonWriteFileError, FileNotFoundError, JSONDecodeError):
+            valide = False
 
     return valide
 
