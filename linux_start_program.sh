@@ -7,7 +7,7 @@ poetry_shell_install=0
 if poetry --version;
 	then
 		poetry_shell_install=1
-		echo "У вас установлен poetry, начинаю загрузку окружения..."
+		
 else
 	echo "К сожалению у вас не установлен poetry"
 fi
