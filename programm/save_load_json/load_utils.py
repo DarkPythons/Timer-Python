@@ -51,7 +51,7 @@ def get_json_path_load() -> str:
 
     # Пока нет итогового пути
     while not path:
-        valide_path: bool = validate_user_path_json(user_path)
+        valide_path: bool = validate_user_path_json(user_path, "load")
 
         if valide_path:
             print(f"Путь '{user_path}' валиден, загрузка прогресса пройдет из него.")

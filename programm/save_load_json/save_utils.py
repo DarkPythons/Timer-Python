@@ -62,7 +62,7 @@ def get_json_path_save() -> str:
 
     delay_actions()
     
-    valide_path: bool = validate_user_path_json(user_path)
+    valide_path: bool = validate_user_path_json(user_path, "save")
     # Если путь который ввёл пользователь валиден
     if valide_path:
         print(f"Путь '{user_path}' валиден, сохранение результатов пройдёт в него.")
