@@ -80,9 +80,10 @@ def validate_user_path_diag(user_path: str) -> bool:
         valide = False
     
     # Проверка на корректное окончание пути, то есть расширение файла
-    if len_path > 5:
-        if user_path[-4:] != ".png":
-            valide = False
+    
+    if user_path[-4:] != ".png":
+        valide = False
+   
         
     # Если путь всё ещё валиден
     if valide:

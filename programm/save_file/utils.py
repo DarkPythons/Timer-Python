@@ -16,9 +16,8 @@ def validate_user_path(user_path: str) -> bool:
     len_path = len(user_path)
     if len_path < 5:
         valide = False
-    if len_path > 5:
-        if user_path[-4:] != ".txt":
-            valide = False
+    if user_path[-4:] != ".txt":
+        valide = False
     try:
         with open(user_path, "a") as file:
             file.write("")
