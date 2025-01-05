@@ -14,6 +14,7 @@ def save_diagram_to_file(file_path: str, dict_timers_all: dict[str, Timer]) -> N
     """
     Функция для сохранения диаграммы, которая уже была выведена в файл
     file_path - путь до файла, куда нужно будет поместить диаграмму
+    dict_timers_all - словарь всех объектов таймеров программы.
     """
     # Делаем получение только объектов таймеров помещая эти объекты в список
     timers_object_list: list[Timer] = get_timers_list(dict_timers_all)
