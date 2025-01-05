@@ -62,13 +62,13 @@ def validate_user_path_json(user_path: str, load_or_save: str) -> bool:
     # Если путь до файла и сам файл нужно проверить на загрузку данных туда
     if load_or_save == "save":
         if valide:
-            valide = open_write_json_by_save()
+            valide = open_write_json_by_save(user_path)
 
     # Если путь до файла и сам файл нужно проверить на загрузку данных оттуда
     if load_or_save == "load":
         # Если путь всё ещё валиден, нужно делать ещё проверку
         if valide:
-            valide = open_read_json_by_load()
+            valide = open_read_json_by_load(user_path)
 
     
     return valide
