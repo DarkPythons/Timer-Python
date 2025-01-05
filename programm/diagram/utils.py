@@ -116,4 +116,3 @@ def get_file_path_diagram() -> str:
         print(f"по пути: '{path}'")
     
     return path
-
